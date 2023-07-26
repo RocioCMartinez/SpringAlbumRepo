@@ -1,6 +1,15 @@
 package com.songr.songr.album;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Album {
+    @Id
+            @GeneratedValue(strategy = GenerationType.IDENTITY)
+            long id;
     String title;
 
     String artist;
@@ -11,7 +20,7 @@ public class Album {
 
     String imageUrl;
 
-    public Album() {
+    protected Album() {
     }
 
     public Album(String title, String artist, int songCount, double length) {
