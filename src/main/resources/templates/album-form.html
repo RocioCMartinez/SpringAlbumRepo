@@ -10,7 +10,7 @@
 <ul>
     <!-- Loop through the albumCollection and display each album -->
     <li th:each="album : ${albums}">
-        <h2>Album Title: <span th:text="${album.title}">ALBUM TITLE</span></h2>
+        <h2>Album Title:  <a th:href="'/albums/' + ${album.id}" th:text="${album.title}">ALBUM TITLE</a></h2>
         <p>Album Artist: <span th:text="${album.artist}">ALBUM ARTIST</span></p>
         <p>Album Song Count: <span th:text="${album.songCount}">ALBUM SONGCOUNT</span></p>
         <p>Album Length(sec): <span th:text="${album.length}">ALBUM LENGTH</span></p>
