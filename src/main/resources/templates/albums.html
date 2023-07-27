@@ -2,18 +2,42 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Albums</title>
+    <title>Album</title>
 </head>
 <body>
-<h1>Albums Collection</h1>
+<h1>Album Information</h1>
 <ul>
-    <!-- Loop through the albumCollection and display each album -->
-    <li th:each="album : ${albums}">
+
+    <li>
         <h2>Album Title: <span th:text="${album.title}">ALBUM TITLE</span></h2>
         <p>Album Artist: <span th:text="${album.artist}">ALBUM ARTIST</span></p>
         <p>Album Song Count: <span th:text="${album.songCount}">ALBUM SONGCOUNT</span></p>
         <p>Album Length(sec): <span th:text="${album.length}">ALBUM LENGTH</span></p>
     </li>
+    <h2> Songs </h2>
+    <ul th:each="song : ${songs}">
+        <li th:text="${song.title}"></li>
+        <li th:text="${song.length}"></li>
+        <li th:text="${song.trackNumber}"></li>
+        <li th:text="${song.album.title}"></li>
+        <p>--------------------</p>
+    </ul>
+
+    <form action="/song/add" method="POST">
+        <fieldset>
+            <legend>Add a song to this album</legend>
+            <label>Song Title</label>
+            <input type="text" name="title">
+            <lable>Song Length</lable>
+            <input type="text" name="length">
+            <lable>Track Number</lable>
+            <input type="text" name="trackNumber">
+            <input type="hidden" name="albumName" th:value="${album.title}">
+            <input type="submit" value="Add Song">
+        </fieldset>
+    </form>
+
+
 </ul>
 
 </body>
